@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Weather</string>
+    <string name="createcity_title">Nouvelle ville</string>
+    <string name="createcity_positive">Créér</string>
+    <string name="createcity_negative">Retour</string>
+    <string name="createcity_hint">New York, Londres...</string>
+    <string name="menu_create_city">Créer ville</string>
 </resources>
