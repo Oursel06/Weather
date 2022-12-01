@@ -31,7 +31,7 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
     fun createCity(city: City) : Boolean{
         val values = ContentValues()
         values.put(CITY_KEY_NAME, city.name)
-        Log.d(TAG, "table $values créée !")
+        Log.d(TAG, "Ville ${city.name} ajoutée !")
         val id = writableDatabase.insert(CITY_TABLE_NAME, null, values)
         city.id = id
         return id > 0
