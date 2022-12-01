@@ -15,6 +15,7 @@ private val cityListener: CityAdapter.CityItemlistener)
         fun onCitySelected(city: City)
         fun onCityDeleted(city: City)
     }
+
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val cardView = itemView.findViewById<CardView>(R.id.card_view)!!
         val cityNameView = itemView.findViewById<TextView>(R.id.name)!!
@@ -35,6 +36,7 @@ private val cityListener: CityAdapter.CityItemlistener)
     }
 
     override fun getItemCount(): Int = cities.size
+
     override fun onClick(view: View?) {
         when(view?.id){
             R.id.card_view -> cityListener.onCitySelected(view?.tag as City)
