@@ -7,11 +7,12 @@
     android:background="@color/smoke"
     tools:context=".city.CityActivity">
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/city_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.weather.city.CityFragment">
-    </fragment>
+        android:name="com.weather.city.CityFragment"
+        tools:layout="@layout/fragment_city">
+    </androidx.fragment.app.FragmentContainerView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

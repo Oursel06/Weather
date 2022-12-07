@@ -10,8 +10,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.weather.App
 import com.weather.Database
 import com.weather.R
+import com.weather.utils.toast
 
 class CityFragment : Fragment(), CityAdapter.CityItemlistener {
+    interface CityFragmentListener{
+        fun onCitySelected(city: City)
+    }
+    var listener : CityFragmentListener? = null
     private lateinit var cities : MutableList<City>
     private lateinit var  database : Database
     private lateinit var recyclerView: RecyclerView
@@ -79,22 +84,22 @@ class CityFragment : Fragment(), CityAdapter.CityItemlistener {
         if(database.createCity(city)){
             cities.add(city)
             adapter.notifyDataSetChanged()
-            Toast.makeText(context, "Ville '${city.name}' créée", Toast.LENGTH_SHORT).show()
+            context?.toast("Ville '${city.name}' créée")
         }else{
-            Toast.makeText(context, "Impossible de créér la ville '${city.name}'", Toast.LENGTH_SHORT).show()
+            context?.toast("Impossible de créér la ville '${city.name}'")
         }
     }
     private fun deleteCity(city: City) {
         if(database.deleteCity(city)){
             cities.remove(city)
             adapter.notifyDataSetChanged()
-            Toast.makeText(context, "Ville '${city.name}' supprimée", Toast.LENGTH_SHORT).show()
+            context?.toast("Ville '${city.name}' supprimée")
         }else{
-            Toast.makeText(context, "Impossible de supprimer la ville '${city.name}'", Toast.LENGTH_SHORT).show()
+            context?.toast("Impossible de supprimer la ville '${city.name}'")
         }
     }
     override fun onCitySelected(city: City) {
-
+        listener?.onCitySelected(city)
     }
     override fun onCityDeleted(city: City) {
         showDelteCityDialog(city)
