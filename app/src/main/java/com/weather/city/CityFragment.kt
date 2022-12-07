@@ -61,7 +61,20 @@ class CityFragment : Fragment(), CityAdapter.CityItemlistener {
         }
         createCityFragment.show(fragmentManager!!, "CreateCityDialogFragment")
     }
+    @SuppressLint("UseRequireInsteadOfGet")
+    private fun showDelteCityDialog(city: City) {
+        val deleteCityFragment = DeleteCityDialogFragment.newInstance(city.name)
+        deleteCityFragment.listener = object : DeleteCityDialogFragment.DeleteCityDialogListener{
+            override fun onDialogPosiiveClick() {
+                deleteCity(city)
+            }
 
+            override fun onDialogNegativeClick() {
+            }
+
+        }
+        deleteCityFragment.show(fragmentManager!!, "DeleteCityDialogFragment")
+    }
     private fun saveCity(city: City) {
         if(database.createCity(city)){
             cities.add(city)
@@ -71,11 +84,19 @@ class CityFragment : Fragment(), CityAdapter.CityItemlistener {
             Toast.makeText(context, "Impossible de créér la ville '${city.name}'", Toast.LENGTH_SHORT).show()
         }
     }
-
+    private fun deleteCity(city: City) {
+        if(database.deleteCity(city)){
+            cities.remove(city)
+            adapter.notifyDataSetChanged()
+            Toast.makeText(context, "Ville '${city.name}' supprimée", Toast.LENGTH_SHORT).show()
+        }else{
+            Toast.makeText(context, "Impossible de supprimer la ville '${city.name}'", Toast.LENGTH_SHORT).show()
+        }
+    }
     override fun onCitySelected(city: City) {
 
     }
-
     override fun onCityDeleted(city: City) {
+        showDelteCityDialog(city)
     }
 }

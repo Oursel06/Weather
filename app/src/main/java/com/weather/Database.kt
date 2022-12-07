@@ -50,4 +50,9 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         }
         return cities
     }
+
+    fun deleteCity(city: City): Boolean {
+        val deleteCount = writableDatabase.delete(CITY_TABLE_NAME, "$CITY_KEY_ID = ?", arrayOf("${city.id}"))
+        return deleteCount == 1
+    }
 }

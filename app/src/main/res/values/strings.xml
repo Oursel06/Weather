@@ -5,4 +5,6 @@
     <string name="createcity_positive">Ajouter</string>
     <string name="createcity_negative">Annuler</string>
     <string name="menu_create_city">Ajouter une ville</string>
+    <string name="menu_delete_city">Supprimer la ville</string>
+    <string name="deletecity_positive">Supprimer</string>
 </resources>
