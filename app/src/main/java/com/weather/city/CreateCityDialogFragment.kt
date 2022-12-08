@@ -32,6 +32,6 @@ class CreateCityDialogFragment :DialogFragment() {
                 dialog.cancel()
                 listener?.OnDialogNegativeClick()
             })
-        return  builder.create()
+        return builder.create()
     }
 }

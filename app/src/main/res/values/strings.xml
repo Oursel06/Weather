@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Weather</string>
     <string name="createcity_hint">Entrez une ville</string>
-    <string name="createcity_title">Nouvelle ville</string>
+    <string name="createcity_title">Ajouter une ville de France</string>
     <string name="createcity_positive">Ajouter</string>
     <string name="createcity_negative">Annuler</string>
     <string name="menu_create_city">Ajouter une ville</string>
